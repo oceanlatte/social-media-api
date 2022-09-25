@@ -75,9 +75,22 @@ const thoughtController = {
   },
 
   // ----- api/thoughts/:thoughtId/reactions -----
-
   // POST a reaction stored in a single thought's reactions array field
-  
+  addReaction({ params, body }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.thoughtId },
+      { $push: { reactions: body } },
+      { new: true, runValidators: true }
+    )
+    .then(dbThoughtData => {
+      if(!dbThoughtData) {
+        res.status(404).json({ message: 'No thoughts found with this id' });
+        return;
+      }
+      res.json(dbThoughtData);
+    }) 
+    .catch(err => res.json(err));
+  },  
   // DELETE to pull & remove a reaction by the reactionId value
 }
 
