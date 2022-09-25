@@ -53,7 +53,7 @@ const ThoughtSchema = new Schema({
 {
   toJSON: {
     getters: true,
-    validators: true
+    virtuals: true
   },
   id: false
 });

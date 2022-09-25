@@ -59,10 +59,7 @@ const userController = {
     }) 
     .catch(err => res.status(400).json(err));
   },
-
-  // BONUS: Remove a user's associated thoughts when deleted
-
-  // ---- api/users/:userId/friends/:friendId
+  // ---- api/users/:userId/friends/:friendId ------
   // POST to add a new friend to a users' friend list
   addNewFriend({ params }, res) {
     User.findOneAndUpdate(
