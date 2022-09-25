@@ -12,7 +12,6 @@ const userController = {
     });
   },
   // get single user 
-  // (X) _id, ()thought, and ()friend data
   getUserById({ params }, res)  {
     User.findOne({ _id: params.id })
     .then(dbOneUserData => {
@@ -60,8 +59,13 @@ const userController = {
     }) 
     .catch(err => res.status(400).json(err));
   }
+
   // BONUS: Remove a user's associated thoughts when deleted
 
+  // ---- api/users/:userId/friends/:friendId
+  // POST to add a new friend to a users' friend list
+
+  // DELETE to remove a friend from a user's friend list
 }
 
 module.exports = userController;
